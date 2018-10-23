@@ -12,6 +12,18 @@ import org.openqa.selenium.os.WindowsUtils;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+
+
+
 import java.io.*;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -292,6 +304,61 @@ public  Properties loadingPropertiesFile(String strDataFilePath) {
         return decoded;
     }
 
+    
+    /**
+     * Below method is for encrypting the Password
+     * @param orgPw
+     * @return
+     */
+    public static String encryptPw(String orgPw) throws Exception {
+        Key key = generateKey();
+        Cipher c = Cipher.getInstance(ALGO);
+
+        c.init(Cipher.ENCRYPT_MODE, key);
+        byte[] encValue = c.doFinal(orgPw.getBytes());
+        String encryptedValue = new BASE64Encoder().encode(encValue);
+
+        System.out.println("\n "+encryptedValue);
+        return encryptedValue;
+
+    }
+
+
+    private static final String ALGO = "AES";
+
+    private static final byte[] keyValue = new byte[] { 'm', 'Y', 'p', 'U',
+            'b', 'l', 'I', 'c', 'k', 'E', 'y', 'n', 'A', 'e', 'E', 'M' };
+    public static Key generateKey() throws Exception{
+        Key key = new SecretKeySpec(keyValue, ALGO);
+        return key;
+    }
+
+    /**
+     * Below method is for decrypting the Password
+     * @param encryptedPw
+     * @return
+     * @throws NoSuchPaddingException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeyException
+     * @throws IOException
+     * @throws BadPaddingException
+     * @throws IllegalBlockSizeException
+     */
+    public static String decryptPw(String encryptedPw) throws Exception {
+        Key key = generateKey();
+        Cipher c = Cipher.getInstance(ALGO);
+        c.init(Cipher.DECRYPT_MODE, key);
+
+        byte[] decValue = new BASE64Decoder().decodeBuffer(encryptedPw);
+        byte[] decodeValue = c.doFinal(decValue);
+        String decryptedValue = new String(decodeValue);
+        System.out.println("\n "+decryptedValue);
+        return decryptedValue;
+    }
+
+
+    
+    
 
     public void highlightMe(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;

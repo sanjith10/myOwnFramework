@@ -1,0 +1,3 @@
+To Execute encryptPw(String orgPw) and decryptPw(String decryptPw) to skip the compilation errors
+I have changed the JavaCompiler section to eclipse compiler and proceed on errors checked
+File ->Settings->Build, Execution, Deployment->Compiler->Java Compiler-> Use Compiler section ->selecte dropdown as Eclipse Compiler(existing was 'Javac')

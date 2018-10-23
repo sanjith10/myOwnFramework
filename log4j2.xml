@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+
+	<CustomLevels>
+		<CustomLevel name="CUSTOM" intLevel="50" />
+	</CustomLevels>
+
+	<Appenders>
+
+		<Console name="Consoleln" target="SYSTEM_OUT">
+			<PatternLayout pattern="[%d{MM-dd HH:mm:ssa}][%-5p][%C{1}][%M][%L] - %msg%n" />
+		</Console>
+
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="[%d{MM-dd HH:mm:ssa}][%-5p][%C{1}][%M][%L] - %msg" />
+		</Console>
+
+		<RollingFile name="fileLogger"  filePattern="bal/log/log-info-%d{yyyy-MM-dd}.log">
+			<PatternLayout pattern="[%d{MM-dd HH:mm:ssa}][%-5p][%C{1}][%M][%L] - %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+			</Policies>
+		</RollingFile>
+
+	</Appenders>
+
+	<Loggers>
+
+
+		<Root level="debug">
+			<AppenderRef ref="fileLogger" level="debug"/>
+			<AppenderRef ref="Consoleln" level="debug"/>
+		</Root>
+
+	</Loggers>
+
+</Configuration>

@@ -752,6 +752,25 @@ public int getRowCount(String sheetName){
         return i;
     }
 
+    
+    //This method is to get the count of the test steps of test case
+    //This method takes three arguments (Sheet name, Test Case Id & Test case row number)
+    public static int getTestStepsCount(String SheetName, String sTestCaseName, int iTestCaseStart) throws Exception{
+        for(int i=iTestCaseStart;i<=dataTable.getRowCount(SheetName);i++){
+            if(!sTestCaseName.equals(dataTable.getCellData(i, PublicVariables.col_TestCaseName, SheetName))){
+                int number = i;
+                return number;
+            }
+        }
+        excelSheet = excelWorkbook.getSheet(SheetName);
+        int number=excelSheet.getLastRowNum()+1;
+        return number;
+    }
+    
+    
+    
+    
+    
     /**
      * Getting Row Data from given Row Number
      * @param rowNum

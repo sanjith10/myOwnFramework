@@ -1,0 +1,77 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Staging2 Environment - In Progress Scripts - BAL- Anusha" configfailurepolicy="continue">
+    <parameter name="sTestExecution" value="D://IMSAssist_UI_TestAutomation//TestExecution.xlsx"></parameter>
+    <parameter name="sTestDataFile" value="TestData_CI"></parameter>
+
+
+
+
+    <test name="loginTest As SuperAdmin">
+        <parameter name="userRole" value="SuperAdmin"/>
+        <classes>
+            <class name="executeEngine.driverScript">
+                <methods>
+                    <include name="mainScriptExecutor">
+
+                    </include>
+
+                </methods>
+
+            </class>
+        </classes>
+    </test>
+
+
+
+    <!--test name="loginTest As SuperAdmin">
+        <parameter name="userName" value="superadmi"/>
+        <parameter name="uRl" value="https://ims-ci.balglobal.com/#/login"></parameter>
+        <parameter name="browserType" value="GC"></parameter>
+        <classes>
+            <class name="Cobalt_BusinessComponents.Login_Components">
+                <methods>
+                    <include name="loginUsingInvalidUn">
+
+                    </include>
+
+                </methods>
+
+            </class>
+        </classes>
+    </test-->
+
+
+
+    <test name="logoutTest As SuperAdmin">
+        <parameter name="strOrgPW" value="Anu@0810"></parameter>
+        <classes>
+            <class name="Cobalt_BusinessComponents.Login_Components">
+                <methods>
+                    <include name="encryptPW">
+
+                    </include>
+
+
+                </methods>
+
+            </class>
+        </classes>
+    </test>
+
+    <test name="loginTest using Invalid User Name">
+        <parameter name="browserType" value="GC"></parameter>
+        <classes>
+            <class name="LoginAndLogoutTests.loginTest">
+                <methods>
+                    <include name="loginMethodUsingInvalidUn">
+                        <parameter name="userName" value="Superadm"/>
+
+                    </include>
+
+
+                </methods>
+
+            </class>
+        </classes>
+    </test-->

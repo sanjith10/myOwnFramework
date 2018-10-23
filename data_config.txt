@@ -1,0 +1,18 @@
+#Login Credentials
+ sEnvironment=
+ sBrowserType=GC
+
+#Admins
+
+ sUsernameSuperAdmin=
+ sPasswordSuperAdmin=
+ SuperAdminName=
+ SuperAdminContactId=
+
+ sUsernameAdmin=
+ sPasswordAdmin=
+ AdminName=
+ AdminContactId=
+ AdminRole=
+ AdminEmail=
+ AdminJobTitle=

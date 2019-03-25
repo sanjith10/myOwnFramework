@@ -1,0 +1,5 @@
+WinWait("Open","",10)
+WinActivate("Open")
+ControlFocus("Open","","[CLASS:Edit]")
+ControlSetText("Open","","[CLASS:Edit]",$CmdLine[1])
+ControlClick("Open","","[CLASS:Button]")

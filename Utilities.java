@@ -59,6 +59,24 @@ public  Properties loadingPropertiesFile(String strDataFilePath) {
         }
 
 }
+    
+    /**
+     * Function: uploadFileDocument
+     * Description: upload file on Open window
+     * @param filePath
+     * @author: Sanjith
+     */
+    public static void uploadFileDocument(String filePath){
+        initializeJacobs();
+        AutoItX autoItX = new AutoItX();
+        autoItX.winWait("Open","",10);
+        autoItX.winActivate("Open");
+        autoItX.controlFocus("Open","","[CLASS:Edit]");
+        autoItX.ControlSetText("Open","","[CLASS:Edit]",PublicVariables.DATA_PATH +filePath);
+        autoItX.controlClick("Open","","[CLASS:Button]");
+    }
+    
+    
     public String ParseUsernameAndPassword(Properties prop, String sUserRole) {
         String strUsernameAndPassword;
         String strUsername;
